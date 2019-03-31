@@ -10,6 +10,6 @@ server.app.use(bodyParser.json());
 server.app.use(cors({ origin: true, credentials: true }));
 server.app.use('/', router)
 
-server.start( () => {
+server.start( (): void => {
     console.log(`Servidor corriendo en: ${server.port}`);
 })
