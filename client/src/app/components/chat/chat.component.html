@@ -1,10 +1,16 @@
 <h1>Chat</h1>
 <hr>
+<div id="chat-messages">
+  <li *ngFor="let msg of messages"
+    class="list-group-item">
+      {{msg.body}}
+  </li>
+</div>
 <form (ngSubmit)="send()">
   <input
     type="text"
     [(ngModel)]="texto"
-    class="form-control"
+    class="form-control chat-input"
     name="texto"
     placeholder="Message.."
     autofocus

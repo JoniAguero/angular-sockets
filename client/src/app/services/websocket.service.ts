@@ -23,8 +23,12 @@ export class WebsocketService {
     });
   }
 
-  emit(type: string, payload?: any, callback?: any) {
-    this.socket.emit(type, payload, callback);
+  emit(event: string, payload?: any, callback?: any) {
+    this.socket.emit(event, payload, callback);
+  }
+
+  listen(event: string) {
+    return this.socket.fromEvent(event);
   }
 
 }

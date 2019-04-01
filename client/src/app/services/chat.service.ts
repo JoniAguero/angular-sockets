@@ -15,4 +15,8 @@ export class ChatService {
     };
     this.webSocketService.emit('message', payload);
   }
+
+  getMessages() {
+    return this.webSocketService.listen('new-message');
+  }
 }
