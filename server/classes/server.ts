@@ -30,7 +30,8 @@ export default class Server {
         console.log('-sockets');
         this.io.on('connection', client => {
             console.log(`Client connected: ${client}`);
-            socket.disconnect(client)
+            socket.message(client);
+            socket.disconnect(client);
         })
     }
 
