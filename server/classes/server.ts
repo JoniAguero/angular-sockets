@@ -31,6 +31,7 @@ export default class Server {
         this.io.on('connection', client => {
             console.log(`Client connected: ${client}`);
             socket.message(client, this.io);
+            socket.userConfig(client);
             socket.disconnect(client);
         })
     }

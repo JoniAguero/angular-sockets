@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +8,12 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  nombre: string;
+  nombre = '';
 
-  constructor() { }
+  constructor(public webSocketService: WebsocketService) { }
 
   login() {
-    console.log(this.nombre);
+    this.webSocketService.loginWS(this.nombre);
   }
 
 }
