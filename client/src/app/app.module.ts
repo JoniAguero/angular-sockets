@@ -9,12 +9,18 @@ const config: SocketIoConfig = { url: environment.wsUrl, options: {} };
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { UserslistComponent } from './components/userslist/userslist.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    ChatComponent
+    ChatComponent,
+    UserslistComponent,
+    LoginComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
