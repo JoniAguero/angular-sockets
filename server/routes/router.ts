@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import Server from '../classes/server';
-import { Socket } from 'socket.io';
+import { usersConnected } from '../sockets/sockets';
 
 const router = Router();
 
@@ -10,9 +10,9 @@ router.get('/messages', (req:Request, res: Response) => {
 
 router.get('/users', (req:Request, res: Response) => {
     const server = Server.instance;
-    server.io.clients((err: any, clients: Socket) => {
+    server.io.clients((err: any) => {
         if (err) return res.json({ok: false, err});
-        res.json({ok: true, clients})
+        res.json({ ok: true, usersConnected})
     })
 })
 

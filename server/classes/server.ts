@@ -29,10 +29,10 @@ export default class Server {
     private listenSockets = () => {
         console.log('-sockets');
         this.io.on('connection', client => {
-            socket.connectClient(client);
-            socket.userConfig(client);
+            socket.connectClient(client, this.io);
+            socket.userConfig(client, this.io);
             socket.message(client, this.io);
-            socket.disconnect(client);
+            socket.disconnect(client, this.io);
         })
     }
 
