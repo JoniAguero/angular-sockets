@@ -21,4 +21,8 @@ export class ChatService {
   getMessages() {
     return this.webSocketService.listen('new-message');
   }
+
+  getMessagesPrivate() {
+    return this.webSocketService.listen('message-private');
+  }
 }
