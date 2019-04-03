@@ -1,13 +1,22 @@
 import { Router, Request, Response } from 'express';
 import Server from '../classes/server';
+import { Socket } from 'socket.io';
 
 const router = Router();
 
-router.get('/mensajes', (req:Request, res: Response) => {
+router.get('/messages', (req:Request, res: Response) => {
     res.json({ok: true, mensaje: 'tutu bem GET!'})
 })
 
-router.post('/mensajes', (req:Request, res: Response) => {
+router.get('/users', (req:Request, res: Response) => {
+    const server = Server.instance;
+    server.io.clients((err: any, clients: Socket) => {
+        if (err) return res.json({ok: false, err});
+        res.json({ok: true, clients})
+    })
+})
+
+router.post('/messages', (req:Request, res: Response) => {
 
     const {body, de} = req.body;
 
@@ -21,7 +30,7 @@ router.post('/mensajes', (req:Request, res: Response) => {
     res.json({ok: true, body, de})
 })
 
-router.post('/mensajes/:id', (req:Request, res: Response) => {
+router.post('/messages/:id', (req:Request, res: Response) => {
 
     const {body, de} = req.body;
     const id = req.params.id;
