@@ -8,7 +8,7 @@ import { User } from '../class/user';
 export class WebsocketService {
 
   public socketStatus = false;
-  public user: User;
+  public user: User = null;
 
   constructor(private socket: Socket) {
     this.loadStorage();
@@ -24,6 +24,10 @@ export class WebsocketService {
       console.log(`Desconectado del servidor`);
       this.socketStatus = false;
     });
+  }
+
+  getUser() {
+    return this.user;
   }
 
   emit(event: string, payload?: any, callback?: any) {
@@ -51,6 +55,7 @@ export class WebsocketService {
   loadStorage() {
     if (localStorage.getItem('user')) {
       this.user = JSON.parse(localStorage.getItem('user'));
+      this.loginWS(this.user.nombre);
     }
   }
 

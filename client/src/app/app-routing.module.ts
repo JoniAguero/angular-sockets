@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { UserGuard } from './guards/user-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'chat', component: MessagesComponent },
+  {
+    path: 'chat',
+    component: MessagesComponent,
+    canActivate: [UserGuard] },
   { path: '**', component: LoginComponent },
 ];
 

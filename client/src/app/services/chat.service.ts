@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WebsocketService } from './websocket.service';
+import { User } from '../class/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,12 @@ export class ChatService {
 
   constructor(public webSocketService: WebsocketService) { }
 
-  sendMessage(msg: string) {
+  sendMessage(nombre: string, msg: string) {
     const payload = {
-      de: 'Joni',
+      de: nombre,
       body: msg
     };
+    console.log(payload);
     this.webSocketService.emit('message', payload);
   }
 
